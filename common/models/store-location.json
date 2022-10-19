@@ -1,0 +1,30 @@
+{
+  "name": "storeLocation",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "StoreName": {
+      "type": "string",
+      "required": true
+    },
+    "Latitude": {
+      "type": "string",
+      "required": true
+    },
+    "Longitude": {
+      "type": "string",
+      "required": true
+    },
+    "Zipcode": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,71 @@
+{
+  "name": "user",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "notification": {
+      "type": "boolean"
+    },
+    "emailVerified": {
+      "type": "boolean",
+      "default": false
+    },
+    "adminApproved": {
+      "type": "boolean",
+      "default": true
+    },
+    "role": {
+      "type": "array",
+      "default": [
+        "user"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "updatePassword"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "updatePasswordWithOldPassword"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "updateUserInfoByUserId"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "validateUser"
+    }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,45 @@
+version: 2.1
+jobs:
+  build_and_push_api:
+    machine: true
+    steps:
+      - checkout
+      - aws-cli/setup:
+          profile-name: default
+      - run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 438681881613.dkr.ecr.us-east-1.amazonaws.com
+      - run: docker build -f ./Dockerfile -t sensen-api:$CIRCLE_BUILD_NUM .
+      - run: docker tag sensen-api:$CIRCLE_BUILD_NUM 438681881613.dkr.ecr.us-east-1.amazonaws.com/sensen-api:$CIRCLE_SHA1
+      - run: docker tag sensen-api:$CIRCLE_BUILD_NUM 438681881613.dkr.ecr.us-east-1.amazonaws.com/sensen-api:$CIRCLE_BUILD_NUM
+      - run: docker tag sensen-api:$CIRCLE_BUILD_NUM 438681881613.dkr.ecr.us-east-1.amazonaws.com/sensen-api:latest
+      - run: docker push 438681881613.dkr.ecr.us-east-1.amazonaws.com/sensen-api:$CIRCLE_SHA1
+      - run: docker push 438681881613.dkr.ecr.us-east-1.amazonaws.com/sensen-api:$CIRCLE_BUILD_NUM
+      - run: docker push 438681881613.dkr.ecr.us-east-1.amazonaws.com/sensen-api:latest
+  plan-apply:
+    working_directory: ~/sensen-infra/
+    docker:
+      - image: hashicorp/terraform:0.13.2
+    steps:
+      - checkout:
+          path: ~/sensen-infra
+      - run:
+          name: terraform init & plan
+          command: |
+            ls -la
+            pwd
+            terraform version
+            terraform init -input=false
+            terraform plan -out tfapply -var-file variables.tfvars
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+orbs:
+  aws-cli: circleci/aws-cli@1.2.1     
+  kube-orb: circleci/kubernetes@0.11.1       
+  welcome: circleci/welcome-orb@0.4.1
+  slack: circleci/slack@3.4.2     
+workflows:
+  version: 2.1
+  eks_plan_approve_apply:
+    jobs:
+      - build_and_push_api

@@ -1,0 +1,106 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "ssDb",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "ssDb",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "ssDb",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "ssDb",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "ssDb",
+    "public": false
+  },
+  "user": {
+    "dataSource": "ssDb",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": true
+    }
+  },
+  "sparePart": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "productGuide": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "faq": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "sparePartDetails": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "sparePartImage": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "sliderImages": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "techSupport": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "about": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "breakingNews": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "videohub": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "partDescription": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "interchanges": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "storeLocation": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "storeLocations": {
+    "dataSource": "ssDb",
+    "public": true
+  },
+  "stores": {
+    "dataSource": "ssDb",
+    "public": true
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "ssDb": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb+srv://sensen:nuyL1gRwTJatk30B6zsjGg@cluster0.opvy6.mongodb.net/myFirstDatabase?authSource=admin&replicaSet=atlas-fduxwa-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true",
+    "database": "ssDb",
+    "password": "",
+    "name": "ssDb",
+    "user": "",
+    "connector": "mongodb",
+    "useNewUrlParser": true,
+    "useUnifiedTopology": true
+  }
+}

@@ -1,0 +1,42 @@
+version: '3.1'
+services:
+  api:
+    image: sensen.azureecr.com/api:{version}
+    deploy:
+      replicas: {replicas}
+      placement:
+        constraints:
+          - node.platform.os==linux
+      resources:
+        limits:
+          cpus: '0.250'
+          memory: 512M
+        reservations:
+          cpus: '0.250'
+          memory: 512M
+    ports:
+      - "3000:3080"
+    volumes:
+      - "/docker/api/uploads:/app/public/uploads"
+    secrets:
+      - {environment_short}-mongoconfig.yml
+    environment:
+      JAVA_OPTS: "-Xmx1g -Xms512m"
+      environment: {environment}
+      environment_short: {environment_short}
+      zone1: {zone1}
+      zone2: {zone2}
+      zone3: {zone3}
+      current_zone: {zone1}
+      SPRING_PROFILES_ACTIVE: "swarm,{environment}"
+      SPRING_CLOUD_INETUTILS_PREFERRED_NETWORKS: "172.20"
+
+    networks:
+      - backend
+networks:
+  backend:
+    external:
+      name: {environment}
+secrets:
+  {environment_short}_mongoconfig.yml:
+    external: true

@@ -1,0 +1,30 @@
+{
+  "restApiRoot": "/api",
+  "host": "0.0.0.0",
+  "port": 3000,
+  "baseUrl": "https://api.sensen.cindt.co/",
+  "UiBaseUrl": "http://localhost:3001/",
+  "dbConfig": {
+    "user": "Admin",
+    "password": "YourPwdShouldBeLongAndSecure!",
+    "server": "database-1.cjoox2boikvk.us-east-1.rds.amazonaws.com",
+    "database": "SENSEN"
+  },
+  "remoting": {
+    "context": false,
+    "rest": {
+      "handleErrors": false,
+      "normalizeHttpPath": false,
+      "xml": false
+    },
+    "json": {
+      "strict": false,
+      "limit": "100kb"
+    },
+    "urlencoded": {
+      "extended": true,
+      "limit": "100kb"
+    },
+    "cors": false
+  }
+}

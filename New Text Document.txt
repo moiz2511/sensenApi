@@ -1,0 +1,11 @@
+{
+
+lat:25
+lon:66
+name:
+zipcode:
+
+}
+
+ERRORS:
+KEYBOARD NOT AUTOCLOSING

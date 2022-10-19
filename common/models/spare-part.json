@@ -1,0 +1,19 @@
+{
+  "name": "sparePart",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "sparePartDetails": {
+      "type": "hasMany",
+      "model": "sparePartDetails",
+      "foreignKey": "Item Identifier"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,48 @@
+{
+  "name": "stores",
+  "plural": "stores",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "contact": {
+      "type": "string",
+      "required": true
+    },
+    "openTime": {
+      "type": "string"
+    },
+    "closeTime": {
+      "type": "string"
+    },
+    "type": {
+      "type": [
+        "string"
+      ]
+    },
+    "latitude": {
+      "type": "string",
+      "required": true
+    },
+    "longitude": {
+      "type": "string",
+      "required": true
+    },
+    "zipcode": {
+      "type": "string"
+    },
+    "websiteUrl": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

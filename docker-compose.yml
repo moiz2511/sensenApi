@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  app:
+    image: node:12-alpine
+    volumes:
+      - .:/builder/
+    working_dir: /builder/
+  loopback-api:
+    build:
+      context: ./
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/apps/loopback
+    depends_on:
+     - mongo
+    environment:
+     - SENDGRID_API_KEY=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     
+     - MONGO_URI=mongodb://sensen:nuyL1gRwTJatk30B6zsjGg@sensen-mongo.cluster-cjoox2boikvk.us-east-1.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
+    #env_file: .env
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"    
+    environment:
+     - MONGO_PASSWORD=nuyL1gRwTJatk30B6zsjGg

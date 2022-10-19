@@ -1,0 +1,25 @@
+product: '1.0.0'
+
+info:
+  name: sensend_backend
+  title: "sensend_backend"
+  version: "1.0.0"
+
+apis:
+  'sensend_backend_100':
+    $ref: sensend_backend.yaml
+
+visibility:
+  view:
+    type: public
+  subscribe:
+    type: authenticated
+
+plans:
+  default:
+    title: Default Plan
+    description: Default Plan
+    approval: false
+    rate-limit:
+      value: 100/hour
+      hard-limit: false
